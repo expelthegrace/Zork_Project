@@ -1,10 +1,15 @@
 #pragma once
 #include "globals.h"
+#include "creature.h"
 
-class player
+class player:public creature
 {
 public:
-	player();
+	player(type t, string name, string desc, vector<entity *>& contains, int life, room* sala);
+
+	void inventari();
+	void printStats();
+
 
 
 };

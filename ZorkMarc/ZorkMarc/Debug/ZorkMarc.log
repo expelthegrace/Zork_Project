@@ -1,3 +1,6 @@
 ﻿  world.cpp
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(40): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(65): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(81): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(72): warning C4715: 'world::findEntity': no todas las rutas de acceso de control devuelven un valor
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\globals.h(22): warning C4715: 'actionToString': no todas las rutas de acceso de control devuelven un valor
   ZorkMarc.vcxproj -> C:\Users\MSI\Desktop\Master\Zork_Project\ZorkMarc\Debug\ZorkMarc.exe
