@@ -5,12 +5,10 @@
 class player:public creature
 {
 public:
-	player(type t, string name, string desc, vector<entity *>& contains, int life, room* sala);
+	player(type t, string name, string desc, int life, entity* father, room* sala);
 
 	void inventari();
 	void printStats();
-
-
 
 };
 

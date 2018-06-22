@@ -2,20 +2,22 @@
 #include "player.h"
 
 
-player::player(type t, string name, string desc, vector<entity *>& contains, int life, room* sala) :
-	creature(t, name, desc, contains, life, sala)
+player::player(type t, string name, string desc, int life, entity* father,room* sala) :
+	creature(t, name, desc, life,sala, father)
 {
 	
 }
 
 void player::printStats() {
 	cout << endl << "******************************" << endl;
+	cout << "Room: " << upperCase(sala->name) << endl;
 	cout << "Life: " << life << "/100" << endl;
 	inventari();
 }
 
 
 void player::inventari() {
+
 	if (contains.size() == 0) cout << "Your bag is empty" << endl;
 	else {	
 		cout << "Bag: ";

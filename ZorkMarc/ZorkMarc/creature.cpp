@@ -2,8 +2,8 @@
 #include "creature.h"
 
 
-creature::creature(type t, string name, string desc, vector<entity *>& contains, int vida, room* sala):
-	entity(t,name,desc,contains)
+creature::creature(type t, string name, string desc,int vida, room* sala, entity* father):
+	entity(t,name,desc,father)
 {
 	life = vida;
 	this->sala = sala;

@@ -2,8 +2,8 @@
 #include "NPC.h"
 
 
-NPC::NPC(type t, string name, string desc, vector<entity *>& contains,int life, int damage, room* sala):
-	creature(t,name,desc,contains,life, sala)
+NPC::NPC(type t, string name, string desc, int life, int damage,entity* father, room* sala):
+	creature(t,name,desc,life, sala,father)
 {
 
 	this->damage = damage;

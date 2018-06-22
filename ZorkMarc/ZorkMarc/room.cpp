@@ -2,8 +2,8 @@
 #include "room.h"
 
 
-room::room(type t, string name, string desc, vector<entity *>& contains):
-	entity(t,name,desc,contains)
+room::room(type t, string name, string desc, entity* father):
+	entity(t,name,desc, father)
 {
 
 }

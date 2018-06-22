@@ -6,7 +6,7 @@ class creature :
 	public entity
 {
 public:
-	creature(type t, string name, string desc, vector<entity *>& contains, int vida, room* sala);
+	creature(type t, string name, string desc,int vida, room* sala,entity* father);
 	~creature();
 	int life;
 	room* sala;

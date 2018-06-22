@@ -4,7 +4,7 @@ class NPC :
 	public creature
 {
 public:
-	NPC(type t, string name, string desc, vector<entity *>& contains, int life, int damage, room* sala);
+	NPC(type t, string name, string desc, int life, int damage, entity* father, room* sala);
 	~NPC();
 
 	int damage;

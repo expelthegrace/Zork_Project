@@ -12,13 +12,19 @@
 
 using namespace std;
 
-enum type {PLAYER = 0, ROOM, ITEM, NPC};
+enum type {PLAYER = 0, ROOM, ITEM, NPC, EXITDOOR};
 
-enum action { LOOK = 0, PICK, ACTION_END };
+enum action { LOOK = 0, PICK, LEAVE, USE, EXIT, HELP, ACTION_END };
+
+enum direction { NORTH = 0, EAST, SOUTH, WEST};
 
 static string actionToString(action act) {
 	if (act == LOOK) return "LOOK";
 	else if (act == PICK) return "PICK";
+	else if (act == LEAVE) return "LEAVE";
+	else if (act == HELP) return "HELP";
+	else if (act == EXIT) return "EXIT";
+	else if (act == USE) return "USE";
 }
 
 
