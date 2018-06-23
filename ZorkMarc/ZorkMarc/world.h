@@ -4,6 +4,7 @@
 #include "player.h"
 #include "item.h"
 #include "exitRoom.h"
+#include "key.h"
 
 
 class world
@@ -23,7 +24,7 @@ public:
 	room* findRoom(string nom);
 
 	//funcio que identifica la comanda i l'executa
-	bool parse(vector<string> v);
+	bool execute(vector<string> v);
 
 private:
 	player* jugador;

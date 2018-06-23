@@ -8,19 +8,18 @@ entity::entity(type t, string name, string desc, entity* father)
 	this->name = name;
 	this->description = desc;
 
+	opens = nullptr;
+
+	grabable = false;
 	if (father != nullptr) {
 		this->father = father;
 		father->contains.push_back(this);
 	}
 }
 
-entity* entity::Use() {
-	cout << "Oak's words echoed... \"There's a time and place for everything but not now!" << endl;
-	return nullptr;
-}
 
 string entity::Exit() {
-	cout << "It makes no sense" << endl;
+	cout << "It makes no sense." << endl;
 	return NULL;
 }
 
@@ -35,7 +34,7 @@ void entity::inventari() {
 	if (contains.size() == 0) cout << "There is nothing in the " << name << "." << endl;
 	else {	
 		for (int i = 0; i < contains.size(); ++i) {
-			cout << "There is a " << contains[i]->name << endl;
+			cout << "There is a " << contains[i]->name << " inside." << endl;
 		}
 	}
 }

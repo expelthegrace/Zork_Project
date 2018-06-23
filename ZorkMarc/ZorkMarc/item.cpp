@@ -2,10 +2,11 @@
 #include "item.h"
 
 
-item::item(type t, string name, string desc, entity* father, entity* usableOn):
+item::item(type t, string name, string desc, entity* father,  bool grabable):
 	entity(t,name,desc,father)
 {
-	if (usableOn != nullptr) this->usableOn = usableOn;
+	this->grabable = grabable;	
+	
 }
 
 

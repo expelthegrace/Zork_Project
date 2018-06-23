@@ -10,7 +10,7 @@ public:
 
 	void inventari();
 	string Exit();
-	bool locked;
+
 	room* source, *destination;
 };
 

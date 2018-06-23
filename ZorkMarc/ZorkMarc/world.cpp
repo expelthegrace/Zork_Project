@@ -7,20 +7,32 @@ world::world()
 	// funcio que defineix el mon
 
 	vector<entity*> coses1, coses2, coses3;
-	room* room1, *room2, *room3;
+	room* room1, *room2, *room3, *room4;
 
 	// primera room
-	room1 = new room(ROOM, "lawn", "old lawn full of plants", nullptr);
-	room2 = new room(ROOM, "kitchen", "esto es una cosina amigo", nullptr);
-	room3 = new room(ROOM, "living room", "el comedorx", nullptr);
+	room1 = new room(ROOM, "Lawn", "Old lawn full of plants.", nullptr);
+	room2 = new room(ROOM, "Kitchen", "Very old kitchen with cabinets and a fridge.", nullptr);
+	room3 = new room(ROOM, "Storeroom", "el comedorx.", nullptr);
+	room4 = new room(ROOM, "Living room", "el comedorx.", nullptr);
 
-	//coses de la room
-	new item(ITEM, "book", "an old book, it has drawn a tree on the cover", room1, nullptr);
-	entity* tree = new item(ITEM, "tree", "tree with a hole on its trunk", room1, nullptr);
-	new item(ITEM, "wooden_key", "key made of wood", tree, false);
+	//coses de la room1
+	new item(ITEM, "book", "An old book, it has drawn a tree on the cover.", room1, true);
+	entity* tree = new item(ITEM, "Tree", "Tree with a hole on its trunk.", room1, false);
+	
+	new item(ITEM, "Chair", "Wooden old chair", room1,false);
 
-	new exitRoom(EXITDOOR, "wooden_door", "door leading to the kitchen of the house", WEST, room1, room2, room1, true);
+	entity* wooden_door = new exitRoom(EXITDOOR, "Wooden_door", "Door leading to the kitchen of the house.", WEST, room1, room2, room1, true);
+	new key(KEY, "Wooden_key", "Key made of wood", tree, true, wooden_door);
 
+	//coses de la room2
+	new item(ITEM, "White_cabinet", "Big squared cabinet near the lawn door.", room2, false);
+	entity* b_cab = new item(ITEM, "Black_cabinet", "Big squared cabinet near the fridge.", room2, false);
+	entity* table = new item(ITEM, "Table", "Wooden old table on the center of the room.", room2, false);
+	new item(ITEM, "Newspaper", "Dated on 1997. It shows a picture of a car accident,\nit seems that two people died on the crash.", table, true);
+	entity* storeroomDoor = new exitRoom(EXITDOOR, "Storeroom_Door", "Silver Door leading to the storeroom.", NORTH, room2, room3, room2, true);
+	entity* livingroomDoor = new exitRoom(EXITDOOR, "Crystal_Door", "Crystal door that leads to the living room.\nIt has an empty socket where the door handle should be.", NORTH, room2, room4, room2, true);
+
+	new key(KEY, "Silver_key", "Silver little key", b_cab, true, storeroomDoor);
 	
 	// guardar room amb les seves coses
 	rooms.push_back(room1);
@@ -29,8 +41,8 @@ world::world()
 
 
 	//declarar player
-	jugador = new player(PLAYER, "MARCO POLO", "guapo, rico y buen jugador", 100,nullptr, rooms[0]);
-	new item(ITEM, "bottle", "a bottle full of water", jugador,nullptr);
+	jugador = new player(PLAYER, "MARCO POLO", "Guapo, rico y buen jugador", 100,nullptr, rooms[0]);
+	new key(KEY, "Bottle", "A bottle full of water", jugador, true,nullptr);
 	
 
 }
@@ -52,7 +64,7 @@ entity* world::findEntity(string nom, bool lookBag) {
 	{
 		// Dequeue a vertex from queue and print it
 		ent = Q.front();
-		if (upperCase(ent->name) == upperCase(nom)) return Q.front();
+		if (upperCase(ent->name) == upperCase(nom)) return ent;
 		Q.pop_front();
 		for (int i = 0; i < ent->contains.size(); ++i) Q.push_back(ent->contains[i]);
 	}
@@ -73,7 +85,7 @@ void deleteChild(vector<entity *> & contains, string name) {
 	}
 }
 
-bool world::parse(vector<string> tokens) {
+bool world::execute(vector<string> tokens) {
 
 	action comanda = ACTION_END;
 
@@ -99,7 +111,7 @@ bool world::parse(vector<string> tokens) {
 
 			if (target != nullptr) target->inventari();
 			else {
-				cout << "There is not a " << tokens[1] << " on the room" << endl;
+				cout << "There is not a " << tokens[1] << " on the room." << endl;
 				return true;
 			}
 		}
@@ -107,33 +119,33 @@ bool world::parse(vector<string> tokens) {
 
 	else if (comanda == PICK) {
 		if (tokens.size() <= 1) {
-			cout << "Not enough arguments on the command" << endl;
+			cout << "Not enough arguments on the command." << endl;
 			return true;
 		}
 		target = findEntity(tokens[1], false);		
 		if (target == nullptr) {
-			cout << "There is not a " << tokens[1] << " on the room" << endl;
+			cout << "There is not a " << tokens[1] << " on the room." << endl;
 			return true;
 		}
-		if (target->tipus != ITEM) {
+		if (!target->grabable) {
 			cout << "Cannot pick this item" << endl;
 			return true;
 		}
 		deleteChild(target->father->contains, target->name);
 		jugador->contains.push_back(target);
-		cout << "You have put the " << target->name << " on the bag" << endl;
+		cout << "You have put the " << target->name << " on the bag." << endl;
 	}
 
 	else if (comanda == LEAVE) {
 		if (tokens.size() <= 1) {
-			cout << "Not enough arguments on the command" << endl;
+			cout << "Not enough arguments on the command." << endl;
 			return true;
 		}
 		target = nullptr;
 		for (int i = 0; i < jugador->contains.size(); ++i)  // trobo l'objecte a la bossa
 			if (upperCase(tokens[1]) == upperCase(jugador->contains[i]->name)) target = jugador->contains[i];
 		if (target == nullptr) {
-			cout << "You don't have this object on your bag";
+			cout << "You don't have this object on your bag.";
 			return true;
 		}
 
@@ -141,7 +153,7 @@ bool world::parse(vector<string> tokens) {
 			deleteChild(jugador->contains, target->name); // el borro de la bossa
 			jugador->sala->contains.push_back(target);
 			target->father = jugador->sala;
-			cout << "You left " << target->name << " on the " << jugador->sala->name << endl;
+			cout << "You left " << target->name << " on the " << jugador->sala->name << "." << endl;
 		}	
 
 		if (tokens.size() == 4) { // si deixem algo en un altre item
@@ -149,7 +161,7 @@ bool world::parse(vector<string> tokens) {
 			entity* target2 = findEntity(tokens[3], true);
 
 			if (target2 == nullptr) {
-				cout << "There is not a " << tokens[1] << " on the room" << endl;
+				cout << "There is not a " << tokens[1] << " on the room." << endl;
 				return true;
 			}
 			deleteChild(jugador->contains, target->name);
@@ -157,35 +169,66 @@ bool world::parse(vector<string> tokens) {
 			target2->contains.push_back(target);
 			target->father = target2;
 
-			cout << "You left " << target->name << " on the " << target2->name << endl;
+			cout << "You left " << target->name << " on the " << target2->name << "." << endl;
 		}
 	}
 	else if (comanda == EXIT) {
 		target = findEntity(tokens[1], true); // si existeix l'objecte
 		if (target == nullptr) {
-			cout << "There is not a " << tokens[1] << " on the room" << endl;
+			cout << "There is not a " << tokens[1] << " on the room." << endl;
 			return true;
 		}
 
 		if (target->tipus == EXITDOOR) {
 			room* roomAux = findRoom(target->Exit());
-			if (roomAux != nullptr) jugador->sala = roomAux; // si es una porta
-			cout << "You moved to the " << jugador->sala->name << endl;
+			if (roomAux != nullptr) {
+				jugador->sala = roomAux; // si es una porta
+				cout << "You moved to the " << jugador->sala->name << "." << endl;
+			}
 			return true;
 		}
 	}
 
-	else if (comanda == USE) {
-		if (tokens.size() <= 1) {
-			cout << "Not enough arguments on the command" << endl;
+	else if (comanda == USE) { // use key in
+		if (tokens.size() < 4) {
+			cout << "Not enough arguments on the command. USE something IN something." << endl;
 			return true;
 		}
-		target = findEntity(tokens[1], true); // si existeix l'objecte
-		if (target == nullptr) { //si no esta a la bossa
-			cout << "There is not a " << tokens[1] << " on the room" << endl;
+		target = findEntity(tokens[1], true); 
+		if (target == nullptr) { // si no existeix la clau
+			cout << "You don't have a " << tokens[1] << " on your bag." << endl;
 			return true;
 		}
-		target->Use();		
+		entity* targetAux = findEntity(tokens[1], false); // si no esta a la teva bossa
+		if (target != nullptr && targetAux != nullptr) { // si existeix l'objecte i no esta a la teva bossa
+			cout << "You don't have a " << tokens[1] << " on your bag." << endl;
+			return true;
+		}
+		if (target->tipus != KEY) { // es del tipus clau
+			cout << "Oak's words echoed... \"There's a time and place for everything but not now!" << endl;
+			return true;
+		}
+		
+		entity* target2 = findEntity(tokens[3], true);
+		if (target2 == nullptr) { // si la porta no existeix
+			cout << "There is not a " << tokens[3] << " on the room." << endl;
+			return true;
+		}
+		if (target2->tipus != EXITDOOR) { // si no es tipus porta
+			cout << "This is not a blocked path." << endl;
+			return true;
+		}
+		if (target->opens->name == target2->name) { // si la clau obra aquesta porta
+			cout << "The path has been unlocked." << endl;
+			target->opens->locked = false;
+			deleteChild(jugador->contains, target->name);
+			cout << target->name << " has been destroyed." << endl;
+		}
+		else {
+			cout << "Nothing happened" << endl;
+			return true;
+		}
+
 	}
 
 	else if (comanda == HELP) {
@@ -206,7 +249,7 @@ void world::torn() {
 
 	vector<string> tokens = split(inp, ' '); // split the input into words
 	
-	if (!parse(tokens)) cout << "Action not accepted" << endl;
+	if (!execute(tokens)) cout << "Action not accepted" << endl;
 
 
 

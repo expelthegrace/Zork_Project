@@ -1,9 +1,2 @@
-els items haurien de tenir una descripcio extra que s'activi quan s'usen correctament en el seu usableOn, se li pot passar
-un puntar a una funcio perque aquesta faci el que volguem (com fer apareixer algo o desbloquejar porta)
-
-https://stackoverflow.com/questions/12662891/passing-a-member-function-as-an-argument-in-c
-
-
-- afegir una variable grabable als items
-- s'ha de fer el USE in something, que sigui el que sigui, llavors fico que els items tenen una funcio com a parametre
-puc tenir una funcio default pels que no fan res (cout << no passa nada) i les bones les fico a part
+fer el storeroom on puc trobar un ganivet i la maneta, obro la porta de crystal i vaig al living room. alla puc trobar el foc de la 
+xemeneia fins la sala secreta on tenir el combat. el npc que tingui un drop que sigui el premi final

@@ -1,9 +1,9 @@
 ﻿  world.cpp
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(43): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(47): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(57): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(66): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(71): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(133): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(55): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(59): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(69): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(78): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(83): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(145): warning C4018: '<': no coinciden signed/unsigned
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\globals.h(28): warning C4715: 'actionToString': no todas las rutas de acceso de control devuelven un valor
   ZorkMarc.vcxproj -> C:\Users\MSI\Desktop\Master\Zork_Project\ZorkMarc\Debug\ZorkMarc.exe

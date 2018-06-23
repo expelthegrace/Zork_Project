@@ -12,7 +12,7 @@
 
 using namespace std;
 
-enum type {PLAYER = 0, ROOM, ITEM, NPC, EXITDOOR};
+enum type {PLAYER = 0, ROOM, ITEM, NPC, KEY, EXITDOOR};
 
 enum action { LOOK = 0, PICK, LEAVE, USE, EXIT, HELP, ACTION_END };
 

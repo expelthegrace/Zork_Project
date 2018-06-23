@@ -152,6 +152,7 @@
     <ClInclude Include="exitRoom.h" />
     <ClInclude Include="globals.h" />
     <ClInclude Include="item.h" />
+    <ClInclude Include="key.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="room.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="exitRoom.cpp" />
     <ClCompile Include="globals.cpp" />
     <ClCompile Include="item.cpp" />
+    <ClCompile Include="key.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="room.cpp" />
