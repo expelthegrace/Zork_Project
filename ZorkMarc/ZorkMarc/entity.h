@@ -4,7 +4,7 @@
 class entity
 {
 public:
-	entity(type t, string name, string desc, entity* father);
+	entity(string name, string desc, entity* father);
 
 	entity* father, *opens;
 	type tipus;

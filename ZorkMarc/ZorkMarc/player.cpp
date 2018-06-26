@@ -2,10 +2,10 @@
 #include "player.h"
 
 
-player::player(type t, string name, string desc, int life, entity* father,room* sala) :
-	creature(t, name, desc, life,sala, father)
+player::player(string name, string desc, int life, entity* father,room* sala) :
+	creature(name, desc, life,sala, father)
 {
-	
+	this->tipus = PLAYER;
 }
 
 void player::printStats() {

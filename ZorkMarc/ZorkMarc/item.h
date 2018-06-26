@@ -5,7 +5,7 @@ class item :
 {
 public:
 
-	item(type t, string name, string desc, entity* father, bool grabable);
+	item(string name, string desc, entity* father, bool grabable);
 	~item();
 
 	

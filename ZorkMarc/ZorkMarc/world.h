@@ -18,7 +18,7 @@ public:
 	entity* findEntity(string nom, bool lookBag);
 
 	//cada torn del joc
-	void torn();
+	bool torn();
 
 	//funcio que busca l'habitacio per nom
 	room* findRoom(string nom);
@@ -26,10 +26,14 @@ public:
 	//funcio que identifica la comanda i l'executa
 	bool execute(vector<string> v);
 
+	void theend();
+
 private:
 	player* jugador;
 	vector<entity *> entitats;
 	vector<room *> rooms;
+	bool firstTorn;
+	bool lastTorn;
 	
 };
 

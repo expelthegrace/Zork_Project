@@ -6,7 +6,7 @@ class exitRoom :
 	public entity
 {
 public:
-	exitRoom(type t, string name, string desc, direction dir, room* source, room* dest, entity* father, bool locked);
+	exitRoom(string name, string desc, direction dir, room* source, room* dest, entity* father, bool locked);
 
 	void inventari();
 	string Exit();

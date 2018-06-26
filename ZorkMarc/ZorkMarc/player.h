@@ -5,7 +5,7 @@
 class player:public creature
 {
 public:
-	player(type t, string name, string desc, int life, entity* father, room* sala);
+	player(string name, string desc, int life, entity* father, room* sala);
 
 	void inventari();
 	void printStats();

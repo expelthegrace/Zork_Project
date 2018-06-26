@@ -2,10 +2,10 @@
 #include "NPC.h"
 
 
-NPC::NPC(type t, string name, string desc, int life, int damage,entity* father, room* sala):
-	creature(t,name,desc,life, sala,father)
+NPC::NPC(string name, string desc, int life, int damage,entity* father, room* sala):
+	creature(name,desc,life, sala,father)
 {
-
+	this->tipus = NPCCREATURE;
 	this->damage = damage;
 }
 

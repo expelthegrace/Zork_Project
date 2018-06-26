@@ -2,9 +2,9 @@
 #include "entity.h"
 
 
-entity::entity(type t, string name, string desc, entity* father)
+entity::entity(string name, string desc, entity* father)
 {
-	this->tipus = t;
+	this->tipus = ENTITY;
 	this->name = name;
 	this->description = desc;
 
@@ -29,7 +29,7 @@ void entity::Update() {
 
 void entity::inventari() {
 	cout << name << endl;
-	cout << "This is a " << description << endl;
+	cout << description << endl;
 
 	if (contains.size() == 0) cout << "There is nothing in the " << name << "." << endl;
 	else {	

@@ -2,12 +2,13 @@
 #include "exitRoom.h"
 
 
-exitRoom::exitRoom(type t, string name, string desc,  direction dir, room* source, room* dest, entity* father, bool locked) :
-	entity(t, name, desc, father)
+exitRoom::exitRoom(string name, string desc,  direction dir, room* source, room* dest, entity* father, bool locked) :
+	entity(name, desc, father)
 {
 	this->source = source;
 	this->destination = dest;
 	this->locked = locked;
+	this->tipus = EXITDOOR;
 }
 
 
@@ -16,18 +17,15 @@ string exitRoom::Exit() {
 		
 		return destination->name;
 	}
-	else cout << "The door is locked" << endl;
+	else cout << "The path is locked." << endl;
 
 	return " ";
 }
 
 void exitRoom::inventari() {
 	cout << name;
-	if (locked) cout << " (locked)" << endl;
-	else cout << " (unlocked)" << endl;
-
-
-	cout << "This is a " << description << endl;
+	if (locked) cout << " (locked)." << endl;
+	else cout << " (unlocked)." << endl;
 
 	if (contains.size() == 0) cout << "There is nothing in the " << name << "." << endl;
 	else {

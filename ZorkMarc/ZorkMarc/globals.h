@@ -12,7 +12,7 @@
 
 using namespace std;
 
-enum type {PLAYER = 0, ROOM, ITEM, NPC, KEY, EXITDOOR};
+enum type {PLAYER = 0, ROOM, ITEM, NPCCREATURE, KEY, EXITDOOR, ENTITY};
 
 enum action { LOOK = 0, PICK, LEAVE, USE, EXIT, HELP, ACTION_END };
 
@@ -25,8 +25,18 @@ static string actionToString(action act) {
 	else if (act == HELP) return "HELP";
 	else if (act == EXIT) return "EXIT";
 	else if (act == USE) return "USE";
+	else return "no action matched";
 }
 
+static string helpCommand(string act) {
+	if (act == "LOOK") return "LOOK / LOOK something \n  (to look around or something).";
+	else if (act == "PICK") return "PICK something \n  (to put it on your bag).";
+	else if (act == "EXIT") return "EXIT something \n  (to use something to exit the room).";
+	else if (act == "LEAVE") return "LEAVE something / LEAVE something INTO something \n  (to place something either on the room or into something).";
+	else if (act == "USE") return "USE something INTO something \n  (to use something to unlock something).";
+	else return "";
+
+}
 
 static string upperCase(string s) 
 {

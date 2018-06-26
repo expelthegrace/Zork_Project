@@ -5,46 +5,87 @@
 world::world()
 {
 	// funcio que defineix el mon
-
+	firstTorn = true;
+	lastTorn = false;
 	vector<entity*> coses1, coses2, coses3;
-	room* room1, *room2, *room3, *room4;
+	room* room1, *room2, *room3, *room4, *room5;
 
 	// primera room
-	room1 = new room(ROOM, "Lawn", "Old lawn full of plants.", nullptr);
-	room2 = new room(ROOM, "Kitchen", "Very old kitchen with cabinets and a fridge.", nullptr);
-	room3 = new room(ROOM, "Storeroom", "el comedorx.", nullptr);
-	room4 = new room(ROOM, "Living room", "el comedorx.", nullptr);
+	room1 = new room("Lawn", "Old lawn full of plants.", nullptr);
+	room2 = new room("Kitchen", "Very old kitchen with cabinets and a fridge.", nullptr);
+	room3 = new room("Storeroom", "Storeroom with some shelves with rotten food.", nullptr);
+	room4 = new room("Living_room", "Quite spacious living room with a some portraits on the walls.", nullptr);
+	room5 = new room("Hidden_room", "Dark room without windows and without any decoration.", nullptr);
 
 	//coses de la room1
-	new item(ITEM, "book", "An old book, it has drawn a tree on the cover.", room1, true);
-	entity* tree = new item(ITEM, "Tree", "Tree with a hole on its trunk.", room1, false);
+	new item("book", "An old book, it has drawn a tree on the cover.", room1, true);
+	entity* tree = new item("tree", "Tree with a hole on its trunk.", room1, false);
 	
-	new item(ITEM, "Chair", "Wooden old chair", room1,false);
+	new item("chair", "Wooden old chair", room1,false);
 
-	entity* wooden_door = new exitRoom(EXITDOOR, "Wooden_door", "Door leading to the kitchen of the house.", WEST, room1, room2, room1, true);
-	new key(KEY, "Wooden_key", "Key made of wood", tree, true, wooden_door);
+	entity* wooden_door = new exitRoom("wooden_door", "Door leading to the kitchen of the house.", WEST, room1, room2, room1, true);
+	new key("wooden_key", "Key made of wood", tree, true, wooden_door);
 
 	//coses de la room2
-	new item(ITEM, "White_cabinet", "Big squared cabinet near the lawn door.", room2, false);
-	entity* b_cab = new item(ITEM, "Black_cabinet", "Big squared cabinet near the fridge.", room2, false);
-	entity* table = new item(ITEM, "Table", "Wooden old table on the center of the room.", room2, false);
-	new item(ITEM, "Newspaper", "Dated on 1997. It shows a picture of a car accident,\nit seems that two people died on the crash.", table, true);
-	entity* storeroomDoor = new exitRoom(EXITDOOR, "Storeroom_Door", "Silver Door leading to the storeroom.", NORTH, room2, room3, room2, true);
-	entity* livingroomDoor = new exitRoom(EXITDOOR, "Crystal_Door", "Crystal door that leads to the living room.\nIt has an empty socket where the door handle should be.", NORTH, room2, room4, room2, true);
+	new item("white_cabinet", "Big squared cabinet near the lawn door.", room2, false);
+	entity* b_cab = new item("black_cabinet", "Big squared cabinet near the fridge.", room2, false);
+	entity* table = new item("table", "Wooden old table on the center of the room.", room2, false);
+	new item("newspaper", "Dated on 1997. It shows a picture of a car accident,\nit seems that two people died on the crash.", table, true);
+	entity* storeroomDoor = new exitRoom("storeroom_Door", "Silver door leading to the storeroom.", NORTH, room2, room3, room2, true);
+	entity* livingroomDoor = new exitRoom("livingRoom_door", "Crystal door that leads to the living room.\nIt has an empty socket where the door handle should be.", NORTH, room2, room4, room2, true);
 
-	new key(KEY, "Silver_key", "Silver little key", b_cab, true, storeroomDoor);
-	
+	new key("silver_key", "Silver little key", b_cab, true, storeroomDoor);
+
+	//coses de la room3
+	entity* kitchen_door = new exitRoom("kitchen_door", "Silver Door leading back to the kitchen.", NORTH, room3, room2, room3, false);
+	new item("bottom_shelf", "Aluminium shelf with food scraps.", room3, false);
+	entity* shelf = new item("top_shelf", "Aluminium shelf with doog food cans. *Something smells really bad*.", room3, false);
+	new item("dogFood_can", "It reads \"Mercadona best quality\".", shelf, true);
+	new key("door_handle", "*Maybe it can be fit on the crystal door*.", shelf, true, livingroomDoor);
+
+	//coses de la room4
+	entity* fireDoor = new exitRoom("fireplace", "There is a fireplace on. You can distinguish a hole on the wall behind the flames.", NORTH, room4, room5, room4, true);
+	new item("brown_couch", "The dust covers all the couch. *Better don't sit there*.", room4, false);
+	entity* table_living = new item("table", "Really big table covered with dust", room4, false);
+	new item("drawing", "Childmade drawing. It shows a man with a useful bag on the back.", table_living, true);
+	new exitRoom("kitchen_door", "Crystal door that leads to the kitchen.", NORTH, room4, room2, room4, true);
+
+	//coses de la room5
+	new item("empty_chair", "Placed in the center of the room with some straps on its armchairs.", room5, false);
+	new exitRoom("fireplace_gap", "Gap where you entered through.", NORTH, room5, room5, room5, false);
+
+
 	// guardar room amb les seves coses
 	rooms.push_back(room1);
 	rooms.push_back(room2);
 	rooms.push_back(room3);
+	rooms.push_back(room4);
+	rooms.push_back(room5);
 
 
 	//declarar player
-	jugador = new player(PLAYER, "MARCO POLO", "Guapo, rico y buen jugador", 100,nullptr, rooms[0]);
-	new key(KEY, "Bottle", "A bottle full of water", jugador, true,nullptr);
+	jugador = new player("Forsen", "Best player in the world.", 100,nullptr, rooms[0]);
+	new key("Bottle", "A bottle full of water", jugador, true, fireDoor);
 	
+}
 
+void world::theend() {
+	cout << endl << "Suddently a door closes the wayout.\n...\n...\n...\nYou hear chains noises behind you.\nWhat do you do?" << endl << endl;
+	
+	int i = 3;
+	while (i > 0) {
+		cout <<  ">";
+		string inp;
+		getline(std::cin, inp);
+		if (i != 1) cout << endl << "You are so scared you can't move." << endl;
+		--i;
+	}
+
+	cout << endl << "Your head recieves a hit and you get knocked.\nThe last words you hear are: \"The leader club is two blocks dnwnwn...\n" << endl << endl;
+	cout << "-------------------------------------------------------------------" << endl;
+	cout << "THE END\n" << "Thanks for playing!\nGame developed by Marc Palomar Soler." << endl;
+
+	lastTorn = true;
 }
 
 entity* world::findEntity(string nom, bool lookBag) {
@@ -62,19 +103,15 @@ entity* world::findEntity(string nom, bool lookBag) {
 	}
 	while (!Q.empty())
 	{
-		// Dequeue a vertex from queue and print it
 		ent = Q.front();
 		if (upperCase(ent->name) == upperCase(nom)) return ent;
 		Q.pop_front();
 		for (int i = 0; i < ent->contains.size(); ++i) Q.push_back(ent->contains[i]);
 	}
-
 	return nullptr;
-
 }
 
 room* world::findRoom(string nom) {
-
 	for (int i = 0; i < rooms.size(); ++i)if (rooms[i]->name == nom) return rooms[i];	
 	return nullptr;
 }
@@ -133,7 +170,7 @@ bool world::execute(vector<string> tokens) {
 		}
 		deleteChild(target->father->contains, target->name);
 		jugador->contains.push_back(target);
-		cout << "You have put the " << target->name << " on the bag." << endl;
+		cout << "You have put the " << target->name << " in the bag." << endl;
 	}
 
 	else if (comanda == LEAVE) {
@@ -153,7 +190,7 @@ bool world::execute(vector<string> tokens) {
 			deleteChild(jugador->contains, target->name); // el borro de la bossa
 			jugador->sala->contains.push_back(target);
 			target->father = jugador->sala;
-			cout << "You left " << target->name << " on the " << jugador->sala->name << "." << endl;
+			cout << "You left " << target->name << " into the " << jugador->sala->name << "." << endl;
 		}	
 
 		if (tokens.size() == 4) { // si deixem algo en un altre item
@@ -178,8 +215,9 @@ bool world::execute(vector<string> tokens) {
 			cout << "There is not a " << tokens[1] << " on the room." << endl;
 			return true;
 		}
+		if (jugador->sala->name == "Hidden_room") theend();
 
-		if (target->tipus == EXITDOOR) {
+		else if (target->tipus == EXITDOOR) {
 			room* roomAux = findRoom(target->Exit());
 			if (roomAux != nullptr) {
 				jugador->sala = roomAux; // si es una porta
@@ -228,29 +266,33 @@ bool world::execute(vector<string> tokens) {
 			cout << "Nothing happened" << endl;
 			return true;
 		}
-
 	}
 
 	else if (comanda == HELP) {
-		cout << "Actions you can use" << endl;
-		for (int i = 0; i < ACTION_END; i++) cout << actionToString(static_cast<action>(i)) << endl;	
+		cout << "Valid actions:" << endl;
+		for (int i = 0; i < ACTION_END; i++) cout << helpCommand(actionToString(static_cast<action>(i))) << endl;	
+		cout << "Uppercase and lowercase are indiferent" << endl;
 	}
 	return true;
 }
 
-void world::torn() {
+bool world::torn() {
+
+	if (lastTorn) return false;
 
 	jugador->printStats();
-	cout << endl << ">";
 
+	if (firstTorn) {
+		firstTorn = false;
+		cout << "Where are you? You might try to ask some help." << endl;
+	}
+
+	cout << endl << ">";
 	string inp;
 	getline(std::cin, inp); //get the input line
-	cout << endl;
-
 	vector<string> tokens = split(inp, ' '); // split the input into words
-	
 	if (!execute(tokens)) cout << "Action not accepted" << endl;
 
-
+	return true;
 
 }
