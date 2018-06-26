@@ -1,6 +1,6 @@
 # Zork_Project
 
-Exam to enter into the UPC School Videogames Master's Degree.
+Exam to access into the UPC School Videogames Master's Degree.
 
 
 
@@ -13,6 +13,13 @@ Designed and developed by Marc Palomar Soler.
 
 
 Link to the repository: https://github.com/expelthegrace/Zork_Project
+
+
+Author comments: 
+I'd have liked to create a boss battle at the end but i had not enough time.
+This game has been developed in few days because I had to
+prepare in parallel my Final Degree Project. Even so, I enjoyed so much developing
+this little game and I hope I can join the course to keep working like this. 
 
 License:
 
