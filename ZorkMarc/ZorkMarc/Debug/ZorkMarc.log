@@ -4,5 +4,5 @@ c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(100): warni
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(109): warning C4018: '<': no coinciden signed/unsigned
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(115): warning C4018: '<': no coinciden signed/unsigned
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(120): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(182): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(184): warning C4018: '<': no coinciden signed/unsigned
   ZorkMarc.vcxproj -> C:\Users\MSI\Desktop\Master\Zork_Project\ZorkMarc\Debug\ZorkMarc.exe

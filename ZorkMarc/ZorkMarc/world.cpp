@@ -124,6 +124,8 @@ void deleteChild(vector<entity *> & contains, string name) {
 
 bool world::execute(vector<string> tokens) {
 
+	if (tokens.size() == 0) return false;
+
 	action comanda = ACTION_END;
 
 	vector<action> allActions;

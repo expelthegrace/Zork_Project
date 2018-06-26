@@ -4,10 +4,10 @@ c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(100): warni
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(109): warning C4018: '<': no coinciden signed/unsigned
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(115): warning C4018: '<': no coinciden signed/unsigned
 c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(120): warning C4018: '<': no coinciden signed/unsigned
-c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(182): warning C4018: '<': no coinciden signed/unsigned
+c:\users\msi\desktop\master\zork_project\zorkmarc\zorkmarc\world.cpp(184): warning C4018: '<': no coinciden signed/unsigned
   Generando código
-  1 of 479 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
+  2 of 479 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    1 functions had inline decision re-evaluated but remain unchanged
+    3 functions had inline decision re-evaluated but remain unchanged
   Generación de código finalizada
   ZorkMarc.vcxproj -> C:\Users\MSI\Desktop\Master\Zork_Project\ZorkMarc\Release\ZorkMarc.exe
