@@ -1,0 +1,32 @@
+How to play:
+
+The player has to advance on the story/map with the use of the following commands typed on the console:
+LOOK / LOOK something (to look around or something)
+PICK something (to put it on your bag)
+EXIT something (to use something to exit the room)
+LEAVE something / LEAVE something INTO something (to place something either on the room or into something)
+USE something INTO something (to use something to unlock something)
+HELP (to display this help text)
+
+The player must have to go trough the 5 rooms to get to the finale.
+
+In order to finish (and speedrun) the game you will have to copy and paste this instructions:
+
+pick wooden_key
+use wooden_key on wooden_door
+exit wooden_door
+pick silver_key
+use silver_key on storeroom_door
+exit storeroom_door
+pick door_handle
+exit kitchen_door
+use door_handle on livingroom_door
+exit livingroom_door
+use bottle on fireplace
+exit fireplace
+exit fireplace_gap
+anything
+anything
+anything
+
+

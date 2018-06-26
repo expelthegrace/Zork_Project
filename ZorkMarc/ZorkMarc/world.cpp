@@ -31,7 +31,7 @@ world::world()
 	entity* b_cab = new item("black_cabinet", "Big squared cabinet near the fridge.", room2, false);
 	entity* table = new item("table", "Wooden old table on the center of the room.", room2, false);
 	new item("newspaper", "Dated on 1997. It shows a picture of a car accident,\nit seems that two people died on the crash.", table, true);
-	entity* storeroomDoor = new exitRoom("storeroom_Door", "Silver door leading to the storeroom.", NORTH, room2, room3, room2, true);
+	entity* storeroomDoor = new exitRoom("storeroom_door", "Silver door leading to the storeroom.", NORTH, room2, room3, room2, true);
 	entity* livingroomDoor = new exitRoom("livingRoom_door", "Crystal door that leads to the living room.\nIt has an empty socket where the door handle should be.", NORTH, room2, room4, room2, true);
 
 	new key("silver_key", "Silver little key", b_cab, true, storeroomDoor);
